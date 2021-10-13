@@ -3,22 +3,29 @@ package com.abhinay.notesapp.entity;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class User {
+public class Notes {
 
-	@Getter
-	@Setter
 	@Id
-	private String email;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Getter
+	@Setter
+	private Long id;
 
 	@Getter
 	@Setter
-	private String password;
+	private String title;
+
+	@Getter
+	@Setter
+	private String note;
 
 	@Getter
 	@Setter
@@ -28,16 +35,16 @@ public class User {
 	@Setter
 	private Timestamp lastUpdateTime;
 
-	public User(String email, String password, Timestamp createTime, Timestamp lastUpdateTime) {
+	public Notes(Long id, String title, String note, Timestamp createTime, Timestamp lastUpdateTime) {
 		super();
-		this.email = email;
-		this.password = password;
+		this.id = id;
+		this.title = title;
+		this.note = note;
 		this.createTime = createTime;
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	public User() {
+	public Notes() {
 		super();
 	}
-
 }
