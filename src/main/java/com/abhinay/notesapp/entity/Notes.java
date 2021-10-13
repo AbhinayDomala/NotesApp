@@ -47,4 +47,8 @@ public class Notes {
 	public Notes() {
 		super();
 	}
+	
+	public Notes(long id) {
+		this(id,null,null,null,null);
+	}
 }

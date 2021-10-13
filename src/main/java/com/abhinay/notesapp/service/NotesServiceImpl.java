@@ -25,8 +25,7 @@ public class NotesServiceImpl implements NotesService{
 
 	@Override
 	public void delete(Notes notes) {
-		// TODO Auto-generated method stub
-		
+		repository.deleteById(notes.getId());
 	}
 
 	@Override
