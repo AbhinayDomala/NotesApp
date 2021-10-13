@@ -19,8 +19,7 @@ public class NotesServiceImpl implements NotesService{
 
 	@Override
 	public Notes save(Notes notes) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.save(notes);
 	}
 
 	@Override
@@ -29,9 +28,8 @@ public class NotesServiceImpl implements NotesService{
 	}
 
 	@Override
-	public Optional<Notes> getNoteById(Notes note) {
-		// TODO Auto-generated method stub
-		return null;
+	public Optional<Notes> getNoteById(Notes notes) {
+		return repository.findById(notes.getId());
 	}
 
 }

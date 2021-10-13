@@ -1,9 +1,13 @@
 package com.abhinay.notesapp.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +31,9 @@ public class User {
 	@Getter
 	@Setter
 	private Timestamp lastUpdateTime;
+	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	private List<Notes> notes;
 
 	public User(String email, String password, Timestamp createTime, Timestamp lastUpdateTime) {
 		super();
@@ -40,4 +47,7 @@ public class User {
 		super();
 	}
 
+	public User(String email) {
+		this(email,null,null,null);
+	}
 }
