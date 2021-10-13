@@ -34,4 +34,9 @@ public class NotesServiceImpl implements NotesService{
 		return repository.findById(notes.getId());
 	}
 
+	@Override
+	public List<Notes> findByEmail(String email) {
+		return (List<Notes>) repository.findByEmail(email);
+	}
+
 }

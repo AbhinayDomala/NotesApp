@@ -13,4 +13,6 @@ public interface NotesService {
 	void delete(Notes notes);
 
 	Optional<Notes> getNoteById(Notes note);
+	
+	List<Notes> findByEmail(String email);
 }

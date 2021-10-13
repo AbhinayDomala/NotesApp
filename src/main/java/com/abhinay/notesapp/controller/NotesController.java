@@ -1,5 +1,6 @@
 package com.abhinay.notesapp.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,12 @@ public class NotesController {
 	private NotesService notesService;
 	
 	@GetMapping("/getAllNotes")
-	public Iterable<Notes> getAllNotes() {
-		return notesService.findAll();
+	public ResponseEntity<Iterable<Notes>> getAllNotes(@PathVariable String email) {
+		List<Notes> notesByEmail = notesService.findByEmail(email);
+		if(notesByEmail.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity(notesByEmail,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/note/{id}")

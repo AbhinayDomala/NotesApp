@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.abhinay.notesapp.entity.Notes;
 
 @Repository
-public interface NotesRepository extends CrudRepository<Notes, Long> {
+public interface NotesRepository extends CrudRepository<Notes, Long>, NotesRepositoryCustom {
 
 }
