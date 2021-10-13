@@ -33,9 +33,16 @@ public class NotesController {
 		return new ResponseEntity(notesByEmail,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/note/{id}")
-	public void deleteNoteById(@PathVariable Long id) {
+	@DeleteMapping("/note/{id}/{email}")
+	public ResponseEntity<Object> deleteNoteById(@PathVariable Long id,@PathVariable String email) {
+		Optional<Notes> notesFound = notesService.getNoteById(new Notes(id));
+		if(notesFound.isPresent()) {
+			if(!email.equals(notesFound.get().getUser().getEmail())) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		}
 		notesService.delete(new Notes(id));
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PutMapping("/note")
