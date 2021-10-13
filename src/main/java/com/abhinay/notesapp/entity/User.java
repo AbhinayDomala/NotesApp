@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class User {
 	@Getter
 	@Setter
 	@Id
+	@Pattern(regexp="^[A-Za-z0-9._%+-]+@[A-Za-z.-]+\\.[A-Za-z]{2,6}$")
 	private String email;
 
 	@Getter

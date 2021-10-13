@@ -24,7 +24,7 @@ public class NotesController {
 	@Autowired
 	private NotesService notesService;
 	
-	@GetMapping("/getAllNotes")
+	@GetMapping("/getAllNotes/{email}")
 	public ResponseEntity<Iterable<Notes>> getAllNotes(@PathVariable String email) {
 		List<Notes> notesByEmail = notesService.findByEmail(email);
 		if(notesByEmail.isEmpty()) {
