@@ -12,3 +12,8 @@ target/
 src/main/resources/.DS_Store
 mvnw
 mvnw.cmd
+.classpath
+.project
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.m2e.core.prefs
